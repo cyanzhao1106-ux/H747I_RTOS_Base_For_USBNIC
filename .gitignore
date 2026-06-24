@@ -1,0 +1,54 @@
+# ---- Keil MDK-ARM build output ----
+*.o
+*.d
+*.axf
+*.hex
+*.bin
+*.elf
+*.lst
+*.map
+*.htm
+*.dep
+*.lnp
+*.iex
+*.scvd
+*.crf
+*.lnk
+*.sct.bak
+*_build_log.htm
+*.build_log.htm
+
+# Keil object/listing output folders
+**/H747I_RTOS_Base_For_USBNIC_CM4/
+**/H747I_RTOS_Base_For_USBNIC_CM7/
+
+# ---- Keil user-specific settings ----
+*.uvguix.*
+*.uvoptx
+DebugConfig/
+
+# RTE generated content (keep RTE_Components.h / config if tracked manually)
+**/RTE/_*/
+
+# Keil build log text files
+build_log*.txt
+
+# ---- STM32CubeMX ----
+.mxproject
+
+# ---- Unrelated project directories ----
+LCD_DSI_ULPM_DataClock/
+schematic/
+
+# ---- Claude Code local settings ----
+.claude/settings.local.json
+
+# ---- Local reference material (not for VCS) ----
+Usb_descriptor/
+cdc_spec/
+
+# ---- OS / editor cruft ----
+Thumbs.db
+Desktop.ini
+.DS_Store
+*~
