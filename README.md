@@ -8,6 +8,11 @@ MIPI-DSI dashboard shows the live NIC status.
 > Target board: **STM32H747I-DISCO** (dual-core Cortex-M7 + M4). The application
 > runs entirely on the **CM7** core; the CM4 core is parked in D2 STOP.
 
+<p align="center">
+  <img src="docs/connect_otg_hs_phy_to_usbnic.png" width="680" alt="STM32H747I-DISCO with an RTL815x USB Ethernet dongle attached to the OTG_HS port"><br>
+  <em>Hardware setup — the RTL815x dongle plugged into the board's OTG_HS port.</em>
+</p>
+
 ---
 
 ## Features
@@ -133,6 +138,14 @@ dashboard. Rebuild after changing the define.
   iperf -c <board-ip> -p 5001 -i 1
   ```
 
+Boot-to-iperf UART log (CDC-ECM): enumeration, RTKNIC class match, link up,
+DHCP lease, and an iperf run finishing at ~95 Mbps on an RTL8152B (USB 2.0,
+10/100):
+
+<p align="center">
+  <img src="docs/ecm_test.png" width="720" alt="CDC-ECM UART boot log ending with an iperf result of ~95 Mbps">
+</p>
+
 ---
 
 ## LCD status dashboard
@@ -142,6 +155,13 @@ panel (framebuffer in external SDRAM): title bar with the active CDC mode, then
 **Device / VID:PID / MAC / Link / MTU / IP**. Implementation in
 `CM7/Core/Src/lcd_app.c`; the read-only NIC snapshot API is
 `usbnic_get_info()` in `CM7/LWIP/usbnic_netif.c`.
+
+The same RTL8159 dongle shown in both CDC modes — the title bar reflects the
+active transport and the link line tracks the negotiated speed:
+
+| CDC-ECM | CDC-NCM |
+|:-------:|:-------:|
+| <img src="docs/screen_infor_ecm.png" width="420" alt="LCD dashboard in CDC-ECM mode"> | <img src="docs/screen_infor_ncm.png" width="420" alt="LCD dashboard in CDC-NCM mode"> |
 
 ---
 
